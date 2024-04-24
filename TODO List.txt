@@ -1,0 +1,17 @@
+TODO (basic setting up stuff): 
+	- finish implementing function projectiles
+	- create some custom functions for it 
+	- add stonies that use function projectiles
+	- create death particle effect for maws
+	- add path finding for maws
+	- create room with forced spike diagonals
+
+
+DONE : 
+	- add spikes to game 
+	- add option to make player hitbox visible
+	- add option to add speedrun timer in-game
+	
+	
+Ultimate Goals : 
+	- have a single 3 minute stony boss fight with several patterns and potentially some spikes / maws

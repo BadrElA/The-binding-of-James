@@ -1,0 +1,357 @@
+[gd_scene load_steps=22 format=3 uid="uid://deipsenenjhb0"]
+
+[ext_resource type="Script" path="res://scripts/room.gd" id="1_plfye"]
+[ext_resource type="Texture2D" uid="uid://dg1oka423r56i" path="res://assets/basement.png" id="1_pmm25"]
+[ext_resource type="PackedScene" uid="uid://tkgcxlegpchy" path="res://scenes/player.tscn" id="2_ergrg"]
+[ext_resource type="Script" path="res://scripts/HUDManager.gd" id="3_m4x67"]
+[ext_resource type="Texture2D" uid="uid://cu5diheij55hv" path="res://assets/icons/attack.png" id="3_mwoi7"]
+[ext_resource type="Texture2D" uid="uid://728v08jktk87" path="res://assets/icons/speed.png" id="4_fdvxg"]
+[ext_resource type="Texture2D" uid="uid://pw7bp1xv83jc" path="res://assets/icons/range.png" id="5_6u8w0"]
+[ext_resource type="PackedScene" uid="uid://bejdxcvbcatg5" path="res://scenes/pressure_plate.tscn" id="5_dbxdp"]
+[ext_resource type="Script" path="res://scripts/healthbar.gd" id="5_fp6ks"]
+[ext_resource type="Texture2D" uid="uid://dvybhs80r01ra" path="res://assets/icons/shot_speed.png" id="6_grpdw"]
+[ext_resource type="PackedScene" uid="uid://db8u2wphdpky5" path="res://scenes/gaping_maw.tscn" id="7_3a70e"]
+[ext_resource type="PackedScene" uid="uid://docuqh2bx3cq0" path="res://scenes/maw.tscn" id="8_lwpou"]
+[ext_resource type="Texture2D" uid="uid://bpqkwh0oeitc" path="res://assets/icons/full_heart.webp" id="9_7i8eq"]
+[ext_resource type="Texture2D" uid="uid://d3pn10x7sgksh" path="res://assets/icons/friction.png" id="10_15u1h"]
+[ext_resource type="FontFile" uid="uid://cwnvu8kq2hklj" path="res://assets/fonts/MinecraftRegular-Bmg3.otf" id="10_demsd"]
+[ext_resource type="PackedScene" uid="uid://brdrocomqopcr" path="res://scenes/spikes.tscn" id="14_8g6g7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_engfx"]
+size = Vector2(959, 88)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wsish"]
+size = Vector2(101, 364)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrera"]
+size = Vector2(959, 57)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6knm8"]
+size = Vector2(64, 423)
+
+[sub_resource type="LabelSettings" id="LabelSettings_o0qfu"]
+font = ExtResource("10_demsd")
+font_size = 26
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Room" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_plfye")
+
+[node name="Border" type="Node2D" parent="."]
+position = Vector2(52, 0)
+scale = Vector2(0.892, 1)
+
+[node name="Background" type="Node2D" parent="Border"]
+z_index = -50
+metadata/_edit_lock_ = true
+
+[node name="TopLeft" type="Sprite2D" parent="Border/Background"]
+position = Vector2(239, 135)
+scale = Vector2(2.06, 1.74)
+texture = ExtResource("1_pmm25")
+region_enabled = true
+region_rect = Rect2(235, 157, 233, 155)
+metadata/_edit_lock_ = true
+
+[node name="TopRight" type="Sprite2D" parent="Border/Background"]
+position = Vector2(719.495, 135)
+scale = Vector2(2.06433, 1.74)
+texture = ExtResource("1_pmm25")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(235, 157, 233, 155)
+metadata/_edit_lock_ = true
+
+[node name="BottomLeft" type="Sprite2D" parent="Border/Background"]
+position = Vector2(239, 404.425)
+scale = Vector2(2.06, 1.74742)
+texture = ExtResource("1_pmm25")
+flip_v = true
+region_enabled = true
+region_rect = Rect2(235, 157, 233, 155)
+metadata/_edit_lock_ = true
+
+[node name="BottomRight" type="Sprite2D" parent="Border/Background"]
+position = Vector2(719.495, 404.925)
+scale = Vector2(2.06433, 1.74097)
+texture = ExtResource("1_pmm25")
+flip_h = true
+flip_v = true
+region_enabled = true
+region_rect = Rect2(235, 157, 233, 155)
+metadata/_edit_lock_ = true
+
+[node name="LowWalls" type="StaticBody2D" parent="Border"]
+visible = false
+z_index = -5
+collision_layer = 2
+collision_mask = 179
+metadata/_edit_lock_ = true
+
+[node name="Top" type="CollisionShape2D" parent="Border/LowWalls"]
+position = Vector2(480.5, 44)
+shape = SubResource("RectangleShape2D_engfx")
+debug_color = Color(0.470588, 0.403922, 0.219608, 0.556863)
+metadata/_edit_lock_ = true
+
+[node name="Bottom" type="CollisionShape2D" parent="Border/LowWalls"]
+position = Vector2(481, 495)
+shape = SubResource("RectangleShape2D_engfx")
+debug_color = Color(0.470588, 0.403922, 0.219608, 0.556863)
+metadata/_edit_lock_ = true
+
+[node name="Left" type="CollisionShape2D" parent="Border/LowWalls"]
+position = Vector2(51.5, 270)
+shape = SubResource("RectangleShape2D_wsish")
+debug_color = Color(0.470588, 0.403922, 0.219608, 0.556863)
+metadata/_edit_lock_ = true
+
+[node name="Right" type="CollisionShape2D" parent="Border/LowWalls"]
+position = Vector2(909, 271)
+shape = SubResource("RectangleShape2D_wsish")
+debug_color = Color(0.470588, 0.403922, 0.219608, 0.556863)
+metadata/_edit_lock_ = true
+
+[node name="HighWalls" type="StaticBody2D" parent="Border"]
+visible = false
+z_index = -5
+collision_layer = 4
+collision_mask = 253
+metadata/_edit_lock_ = true
+
+[node name="Top" type="CollisionShape2D" parent="Border/HighWalls"]
+position = Vector2(480.5, 28.5)
+shape = SubResource("RectangleShape2D_hrera")
+metadata/_edit_lock_ = true
+
+[node name="Bottom" type="CollisionShape2D" parent="Border/HighWalls"]
+position = Vector2(480, 508)
+shape = SubResource("RectangleShape2D_hrera")
+metadata/_edit_lock_ = true
+
+[node name="Left" type="CollisionShape2D" parent="Border/HighWalls"]
+position = Vector2(33, 268.5)
+shape = SubResource("RectangleShape2D_6knm8")
+metadata/_edit_lock_ = true
+
+[node name="Right" type="CollisionShape2D" parent="Border/HighWalls"]
+position = Vector2(928, 269)
+shape = SubResource("RectangleShape2D_6knm8")
+metadata/_edit_lock_ = true
+
+[node name="PressurePlate" parent="." instance=ExtResource("5_dbxdp")]
+z_index = -2
+position = Vector2(494, 409)
+metadata/_edit_group_ = true
+
+[node name="Spikes" parent="." instance=ExtResource("14_8g6g7")]
+position = Vector2(623, 279)
+metadata/_edit_group_ = true
+
+[node name="Spikes3" parent="." instance=ExtResource("14_8g6g7")]
+position = Vector2(570, 223)
+metadata/_edit_group_ = true
+
+[node name="Spikes2" parent="." instance=ExtResource("14_8g6g7")]
+position = Vector2(677, 333)
+metadata/_edit_group_ = true
+
+[node name="Player" parent="." node_paths=PackedStringArray("TearContainer") instance=ExtResource("2_ergrg")]
+position = Vector2(707, 379)
+linear_damp = 5.0
+ShotSpeed = 4.0
+TearContainer = NodePath("../TearsContainer")
+
+[node name="TearsContainer" type="Node2D" parent="."]
+y_sort_enabled = true
+metadata/_edit_lock_ = true
+
+[node name="Maw" parent="." node_paths=PackedStringArray("PlayerRef", "TearContainer") instance=ExtResource("8_lwpou")]
+position = Vector2(269, 181)
+PlayerRef = NodePath("../Player")
+TearContainer = NodePath("../TearsContainer")
+
+[node name="GapingMaw" parent="." instance=ExtResource("7_3a70e")]
+position = Vector2(464, 256)
+
+[node name="HealthBar" type="Control" parent="." node_paths=PackedStringArray("PlayerRef")]
+z_index = 5
+layout_mode = 3
+anchors_preset = 0
+offset_left = 83.0
+offset_top = 26.0001
+offset_right = 216.0
+offset_bottom = 66.0001
+script = ExtResource("5_fp6ks")
+PlayerRef = NodePath("../Player")
+metadata/_edit_group_ = true
+
+[node name="H1" type="TextureRect" parent="HealthBar"]
+visible = false
+layout_mode = 0
+offset_left = -5.71429
+offset_top = -4.28574
+offset_right = 34.2857
+offset_bottom = 35.7143
+texture = ExtResource("9_7i8eq")
+
+[node name="H2" type="TextureRect" parent="HealthBar"]
+visible = false
+layout_mode = 0
+offset_left = 37.1429
+offset_top = -4.28575
+offset_right = 77.1429
+offset_bottom = 35.7142
+texture = ExtResource("9_7i8eq")
+
+[node name="H3" type="TextureRect" parent="HealthBar"]
+visible = false
+layout_mode = 0
+offset_left = 80.0
+offset_top = -4.28575
+offset_right = 120.0
+offset_bottom = 35.7142
+texture = ExtResource("9_7i8eq")
+
+[node name="HUD" type="Control" parent="." node_paths=PackedStringArray("PlayerRef")]
+z_index = 5
+layout_mode = 3
+anchors_preset = 0
+offset_left = 75.0
+offset_top = 154.0
+offset_right = 239.0
+offset_bottom = 421.0
+scale = Vector2(0.7, 0.7)
+script = ExtResource("3_m4x67")
+PlayerRef = NodePath("../Player")
+
+[node name="Speed" type="Control" parent="HUD"]
+anchors_preset = 0
+offset_right = 163.0
+offset_bottom = 40.0
+
+[node name="SpeedT" type="Label" parent="HUD/Speed"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 15.0
+offset_right = 94.0
+offset_bottom = 43.055
+theme_override_font_sizes/font_size = 25
+text = "1.0"
+label_settings = SubResource("LabelSettings_o0qfu")
+
+[node name="SpeedS" type="TextureRect" parent="HUD/Speed"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+scale = Vector2(3, 3)
+texture = ExtResource("4_fdvxg")
+stretch_mode = 2
+
+[node name="Friction" type="Control" parent="HUD"]
+anchors_preset = 0
+offset_top = 60.0
+offset_right = 163.0
+offset_bottom = 100.0
+
+[node name="FrictionS" type="TextureRect" parent="HUD/Friction"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+scale = Vector2(3, 3)
+texture = ExtResource("10_15u1h")
+stretch_mode = 2
+
+[node name="FrictionT" type="Label" parent="HUD/Friction"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 15.0
+offset_right = 100.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 25
+text = "5.00
+"
+label_settings = SubResource("LabelSettings_o0qfu")
+
+[node name="Damage" type="Control" parent="HUD"]
+anchors_preset = 0
+offset_top = 120.0
+offset_right = 163.0
+offset_bottom = 160.0
+
+[node name="DamageS" type="TextureRect" parent="HUD/Damage"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 18.0
+offset_bottom = 18.0
+scale = Vector2(3, 3)
+texture = ExtResource("3_mwoi7")
+stretch_mode = 2
+
+[node name="DamageT" type="Label" parent="HUD/Damage"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 15.0
+offset_right = 94.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 25
+text = "3.5
+"
+label_settings = SubResource("LabelSettings_o0qfu")
+
+[node name="Range" type="Control" parent="HUD"]
+anchors_preset = 0
+offset_top = 180.0
+offset_right = 163.0
+offset_bottom = 220.0
+
+[node name="RangeS" type="TextureRect" parent="HUD/Range"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 18.0
+offset_bottom = 19.0
+scale = Vector2(3, 3)
+texture = ExtResource("5_6u8w0")
+stretch_mode = 2
+
+[node name="RangeT" type="Label" parent="HUD/Range"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 15.0
+offset_right = 94.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 25
+text = "10
+"
+label_settings = SubResource("LabelSettings_o0qfu")
+
+[node name="Tears" type="Control" parent="HUD"]
+anchors_preset = 0
+offset_top = 240.0
+offset_right = 163.0
+offset_bottom = 280.0
+
+[node name="TearsS" type="TextureRect" parent="HUD/Tears"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 19.0
+offset_bottom = 18.0
+scale = Vector2(3, 3)
+texture = ExtResource("6_grpdw")
+stretch_mode = 2
+
+[node name="TearsT" type="Label" parent="HUD/Tears"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 15.0
+offset_right = 100.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 25
+text = "4.00
+"
+label_settings = SubResource("LabelSettings_o0qfu")

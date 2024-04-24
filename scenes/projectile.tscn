@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://8yab1fgrsk7g"]
+
+[ext_resource type="Script" path="res://scripts/projectile.gd" id="1_d5mlk"]
+[ext_resource type="Texture2D" uid="uid://bv3825huvd5kq" path="res://assets/Base Tear.png" id="2_fkw73"]
+[ext_resource type="Texture2D" uid="uid://duw7dd7n5qq7a" path="res://assets/shadow.png" id="2_m2jjg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lgmqu"]
+radius = 6.0
+
+[node name="Projectile" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 20
+gravity_scale = 0.0
+lock_rotation = true
+max_contacts_reported = 2
+contact_monitor = true
+script = ExtResource("1_d5mlk")
+
+[node name="ProjShadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.498039)
+z_index = -1
+position = Vector2(0, 29)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_m2jjg")
+
+[node name="ProjSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_fkw73")
+metadata/_edit_lock_ = true
+
+[node name="ProjCollider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lgmqu")
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

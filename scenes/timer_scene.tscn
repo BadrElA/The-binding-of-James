@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c57c3s2uo4r6i"]
+
+[ext_resource type="Script" path="res://scripts/global_timer.gd" id="1_43rjb"]
+[ext_resource type="FontFile" uid="uid://cwnvu8kq2hklj" path="res://assets/fonts/MinecraftRegular-Bmg3.otf" id="1_phy88"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5emj3"]
+font = ExtResource("1_phy88")
+font_size = 35
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
+[node name="TimerScene" type="Node2D"]
+
+[node name="TimerText" type="Label" parent="."]
+offset_left = 7.0
+offset_top = 484.0
+offset_right = 963.0
+offset_bottom = 533.0
+text = "0.00"
+label_settings = SubResource("LabelSettings_5emj3")
+horizontal_alignment = 1
+script = ExtResource("1_43rjb")

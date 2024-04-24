@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgk4txn10nefa"]
+
+[ext_resource type="Texture2D" uid="uid://duw7dd7n5qq7a" path="res://assets/shadow.png" id="1_3l01o"]
+[ext_resource type="Script" path="res://scripts/function_projectile.gd" id="1_yg6vu"]
+[ext_resource type="Texture2D" uid="uid://4cv070vtp1fx" path="res://assets/Enemy Tear.png" id="2_1dtgk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_12dws"]
+radius = 5.0
+
+[node name="FunctionProjectile" type="Area2D"]
+collision_layer = 64
+collision_mask = 5
+script = ExtResource("1_yg6vu")
+
+[node name="FProjShadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.498039)
+z_index = -1
+position = Vector2(0, 29)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_3l01o")
+
+[node name="FProjSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_1dtgk")
+
+[node name="FProjCollider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_12dws")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

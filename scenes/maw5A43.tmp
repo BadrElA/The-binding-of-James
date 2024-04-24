@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://docuqh2bx3cq0"]
+
+[ext_resource type="Script" path="res://scripts/maw.gd" id="1_23pw3"]
+[ext_resource type="Texture2D" uid="uid://cgaxynn0pf0ck" path="res://assets/enemies/maw.png" id="1_bhqb2"]
+[ext_resource type="Texture2D" uid="uid://duw7dd7n5qq7a" path="res://assets/shadow.png" id="2_hvitv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qrlf"]
+atlas = ExtResource("1_bhqb2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhilj"]
+atlas = ExtResource("1_bhqb2")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p3kwj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qrlf")
+}],
+"loop": true,
+"name": &"alt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhilj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ajo1m"]
+radius = 23.0868
+
+[node name="Maw" type="RigidBody2D"]
+collision_layer = 16
+collision_mask = 31
+mass = 5.0
+gravity_scale = 0.0
+lock_rotation = true
+max_contacts_reported = 2
+contact_monitor = true
+linear_damp = 5.0
+angular_damp = 1.0
+script = ExtResource("1_23pw3")
+
+[node name="MawShadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.498039)
+z_index = -1
+position = Vector2(0, 68)
+scale = Vector2(2, 2)
+texture = ExtResource("2_hvitv")
+
+[node name="MawSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_p3kwj")
+
+[node name="MawCollider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ajo1m")
+
+[node name="MawCannon" type="Node2D" parent="."]
+position = Vector2(38, 0)
+
+[node name="ShotCooldown" type="Timer" parent="."]
+autostart = true
+
+[node name="AnimationCooldown" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="timeout" from="ShotCooldown" to="." method="_on_shot_cooldown_timeout"]
+[connection signal="timeout" from="AnimationCooldown" to="." method="_on_anim_cooldown_timeout"]

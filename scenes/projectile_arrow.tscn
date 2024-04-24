@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://c31ng8sgosaft"]
+
+[ext_resource type="PackedScene" uid="uid://ddf8f1ywi2v8f" path="res://scenes/enemy_projectile.tscn" id="1_48thg"]
+[ext_resource type="Script" path="res://scenes/projectile_arrow.gd" id="1_nj4gd"]
+
+[node name="ProjectileArrow" type="Node2D"]
+script = ExtResource("1_nj4gd")
+
+[node name="EProjectile" parent="." instance=ExtResource("1_48thg")]
+position = Vector2(-24, 1)
+
+[node name="EProjectile2" parent="." instance=ExtResource("1_48thg")]
+position = Vector2(26, 16)
+
+[node name="EProjectile3" parent="." instance=ExtResource("1_48thg")]
+position = Vector2(25, -17)
+
+[node name="EProjectile10" parent="." instance=ExtResource("1_48thg")]
+position = Vector2(25, -33)
+
+[node name="EProjectile11" parent="." instance=ExtResource("1_48thg")]
+position = Vector2(25, -49)
+
+[node name="EProjectile12" parent="." instance=ExtResource("1_48thg")]
+position = Vector2(41, -40)
+
+[node name="EProjectile13" parent="." instance=ExtResource("1_48thg")]
+position = Vector2(55, -28)
+
+[node name="EProjectile14" parent="." instance=ExtResource("1_48thg")]
+position = Vector2(67, -15)
+
+[node name="EProjectile15" parent="." instance=ExtResource("1_48thg")]
+position = Vector2(78, 0)
+
+[node name="EProjectile16" parent="." instance=ExtResource("1_48thg")]
+position = Vector2(67, 13)
+
+[node name="EProjectile17" parent="." instance=ExtResource("1_48thg")]
+position = Vector2(55, 26)
+
+[node name="EProjectile18" parent="." instance=ExtResource("1_48thg")]
+position = Vector2(41, 39)
+
+[node name="EProjectile19" parent="." instance=ExtResource("1_48thg")]
+position = Vector2(26, 32)
+
+[node name="EProjectile20" parent="." instance=ExtResource("1_48thg")]
+position = Vector2(26, 48)
+
+[node name="EProjectile4" parent="." instance=ExtResource("1_48thg")]
+position = Vector2(9, 17)
+
+[node name="EProjectile5" parent="." instance=ExtResource("1_48thg")]
+position = Vector2(8, -16)
+
+[node name="EProjectile6" parent="." instance=ExtResource("1_48thg")]
+position = Vector2(-7, 17)
+
+[node name="EProjectile7" parent="." instance=ExtResource("1_48thg")]
+position = Vector2(-8, -16)
+
+[node name="EProjectile8" parent="." instance=ExtResource("1_48thg")]
+position = Vector2(-24, -16)
+
+[node name="EProjectile9" parent="." instance=ExtResource("1_48thg")]
+position = Vector2(-24, 17)

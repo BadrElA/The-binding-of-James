@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjpsqwyp1cpi6"]
+
+[ext_resource type="AudioStream" uid="uid://dalxjymmc0q1g" path="res://assets/music/Foreigner in zeal.mp3" id="1_0n8qb"]
+
+[node name="MusicScene" type="Node2D"]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_0n8qb")
+volume_db = -30.0

@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://bejdxcvbcatg5"]
+
+[ext_resource type="Script" path="res://scripts/pressure_plate.gd" id="1_j2bvt"]
+[ext_resource type="Texture2D" uid="uid://8ru6a67yrt4w" path="res://assets/grid items/pressure_plate.webp" id="1_jrid0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uble3"]
+atlas = ExtResource("1_jrid0")
+region = Rect2(28, 0, 28, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dtrw"]
+atlas = ExtResource("1_jrid0")
+region = Rect2(0, 0, 28, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6y21h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uble3")
+}],
+"loop": true,
+"name": &"pressed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8dtrw")
+}],
+"loop": true,
+"name": &"unpressed",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4orwc"]
+size = Vector2(32, 24)
+
+[node name="PressurePlate" type="Area2D"]
+collision_layer = 32
+collision_mask = 49
+script = ExtResource("1_j2bvt")
+
+[node name="PlateSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_6y21h")
+animation = &"unpressed"
+
+[node name="PlateCollider" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_4orwc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
